@@ -1,9 +1,15 @@
 module.exports = function(grunt) {
+    require('jit-grunt')(grunt);
 
-    // Project configuration.
     grunt.initConfig({
-
-       less: {
+        cssmin: {
+            dist: {
+                files: {
+                    'app/css/main.min.css' : 'app/css/main.css'
+                }
+            }
+        },
+        less: {
             development: {
                 options: {
                     // compress: true,  I will add this to prod folder
@@ -11,26 +17,21 @@ module.exports = function(grunt) {
                     optimization: 2
                 },
                 files: {
-                    'app/main.css': 'app/less/main.less' // destination file : source file if more ['less1' , 'less2' ]
+                    'app/css/main.css': 'app/less/main.less' // destination file : source file if more ['less1' , 'less2' ]
                 }
             }
-       },
-        uglify: {
-            options: {
-                banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
-            },
-            build: {
-                src: 'src/<%= pkg.name %>.js',
-                dest: 'build/<%= pkg.name %>.min.js'
+        },
+        watch: {
+            styles: {
+                files: ['app/less/main.less'], // which files to watch
+                tasks: ['less'],
+                options: {
+                    nospawn: true
+                }
             }
         }
     });
+    grunt.loadNpmTasks('grunt-contrib-cssmin', 'grunt-contrib-less', 'grunt-contrib-watch');
 
-    // Load the plugin that provides the "uglify" task.
-    grunt.loadNpmTasks('grunt-contrib-less', 'grunt-contrib-uglify');
-
-    // Default task(s).
     grunt.registerTask('default', ['less']);
-    grunt.registerTask('less', ['less']);
-
 };
