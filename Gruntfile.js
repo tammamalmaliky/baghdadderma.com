@@ -29,9 +29,24 @@ module.exports = function(grunt) {
                     nospawn: true
                 }
             }
+        },
+        browserSync: {
+            default_options: {
+                bsFiles: {
+                    src: [
+                        "app/css/*.css",
+                        "app/*.html"
+                    ]
+                },
+                options: {
+                    watchTask: true,
+                    server: './app'
+
+                }
+            }
         }
     });
-    grunt.loadNpmTasks('grunt-contrib-cssmin', 'grunt-contrib-less', 'grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-contrib-cssmin', 'grunt-contrib-less', 'grunt-contrib-watch', 'grunt-browser-sync');
 
-    grunt.registerTask('default', ['less']);
+    grunt.registerTask('default', ['browserSync', 'watch']);
 };
