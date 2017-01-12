@@ -44,9 +44,46 @@ module.exports = function(grunt) {
 
                 }
             }
+        },
+        webpack: {
+            options: {
+                // configuration for all builds
+            },
+            build: {
+                entry: "./app/js/App.js",
+                output: {
+                    path: "./app/public/js",
+                    filename: "App.js"
+                }
+            },
+            module: {
+                loaders: [
+                    {
+                        loader: 'babel',
+                        query: {
+                            presets: ['es2015']
+                        },
+                        test: /\.js$/,
+                        exclude: /node_modules/
+                    }
+                ]
+            }
+        },
+        uglify: {
+            options: {
+                mangle: false
+            },
+            my_target: {
+                files: {
+                    'app/public/js/App.js': ['app/js/App.js']
+                }
+            }
         }
+
     });
-    grunt.loadNpmTasks('grunt-contrib-cssmin', 'grunt-contrib-less', 'grunt-contrib-watch', 'grunt-browser-sync');
+    grunt.loadNpmTasks('grunt-contrib-cssmin', 'grunt-contrib-less', 'grunt-contrib-watch', 'grunt-contrib-uglify', 'grunt-browser-sync', 'grunt-webpack');
 
     grunt.registerTask('default', ['browserSync', 'watch']);
+    grunt.registerTask('buildUgly', ['uglify']);
+    grunt.registerTask('buildWebPack', ['webpack']);
 };

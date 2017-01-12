@@ -1,4 +1,4 @@
-@mainBlue: #2f5572;
+@mainBlue: #1e89a7;
 @mainOrange: #D56D0C;
 
 @atSmall {
@@ -69,6 +69,15 @@ a {
 	box-sizing: border-box;
 }
 
+.orange-text {
+	color: @mainOrange;
+}
+
+.blue-text {
+	color: @mainBlue;
+}
+
+
 // Hero Section
 .large-hero {
 	border-bottom: 10px solid @mainBlue;
@@ -107,17 +116,17 @@ a {
 	&__subtitle {
 		font-weight: 300;
 		color: @mainBlue;
-		font-size: 1.5rem;
+		font-size: 1.0rem;
 		margin: 0;
 
 		@media (min-width: 530px) {
-		font-size: 2.9rem;
+		font-size: 1.9rem;
 		}
 
 	}
 
 	&__description {
-		color: #FFF;
+		color: #000;
 		font-size: 1.1rem;
 		font-weight: 100;
 		text-shadow: 2px 2px 0 rgba(0, 0, 0, .1);
@@ -492,15 +501,16 @@ a {
 	&__logo {
 		position: absolute;
 		top: 0;
-		left: 50%;
-		transform: translateX(-50%) scale(.8);
-		transform-origin: 50% 0;
-		background-color: @mainBlue;
+		left: 5%;
+		transform: translateX(-10%) scale(.4);
+		transform-origin: 10% 0;
 		padding: 25px 36px;
 
 		@media (min-width: 800px) {
 		left: auto;
 		transform: translateX(0);
+		background-color: @mainBlue;
+
 		}
 	}
 
@@ -560,4 +570,39 @@ a {
 		display: block;
 		padding: 12px 0;
 	}
+}
+
+
+// Date
+.date {
+	position: relative;
+	width: 70px;
+	font-family: Georgia, serif;
+	color: #999;
+	margin: 0 auto;
+}
+
+.day, .month, .year {
+	position: absolute;
+}
+
+.day {
+	font-size: 30px;
+	top: 15px;
+}
+
+.month {
+	top: 0;
+	left: 0;
+	font-size: 18px;
+}
+
+.year {
+	top: 13px;
+	right: -70px;
+	font-size: 20px;
+	rotation: -90deg !important;
+	/* ** Hacks ** */
+	-webkit-transform: rotate(-90deg);
+	-moz-transform: rotate(-90deg);
 }

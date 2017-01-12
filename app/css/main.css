@@ -39,8 +39,14 @@ a {
 * {
   box-sizing: border-box;
 }
+.orange-text {
+  color: #D56D0C;
+}
+.blue-text {
+  color: #1e89a7;
+}
 .large-hero {
-  border-bottom: 10px solid #2f5572;
+  border-bottom: 10px solid #1e89a7;
   position: relative;
 }
 .large-hero__image {
@@ -62,7 +68,7 @@ a {
 }
 .large-hero__title {
   font-weight: 300;
-  color: #2f5572;
+  color: #1e89a7;
   margin: 0;
   font-size: 2.4rem;
 }
@@ -73,17 +79,17 @@ a {
 }
 .large-hero__subtitle {
   font-weight: 300;
-  color: #2f5572;
-  font-size: 1.5rem;
+  color: #1e89a7;
+  font-size: 1.0rem;
   margin: 0;
 }
 @media (min-width: 530px) {
   .large-hero__subtitle {
-    font-size: 2.9rem;
+    font-size: 1.9rem;
   }
 }
 .large-hero__description {
-  color: #FFF;
+  color: #000;
   font-size: 1.1rem;
   font-weight: 100;
   text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1);
@@ -97,7 +103,7 @@ a {
   }
 }
 .btn {
-  background-color: #2f5572;
+  background-color: #1e89a7;
   color: #FFF;
   text-decoration: none;
   padding: .75rem 1.2rem;
@@ -131,7 +137,7 @@ a {
   }
 }
 .page-section--blue {
-  background-color: #2f5572;
+  background-color: #1e89a7;
   color: #FFF;
 }
 .page-section--testimonials {
@@ -141,7 +147,7 @@ a {
 .headline {
   font-size: 1.9rem;
   font-weight: 300;
-  color: #2f5572;
+  color: #1e89a7;
 }
 @media (min-width: 530px) {
   .headline {
@@ -338,7 +344,7 @@ a {
   border: 6px solid rgba(255, 255, 255, 0.8);
 }
 .testimonial__title {
-  color: #2f5572;
+  color: #1e89a7;
   text-align: center;
   font-size: 1.5rem;
   font-weight: 500;
@@ -352,7 +358,7 @@ a {
   margin: .25rem 0 1rem 0;
 }
 .site-footer {
-  background-color: #2f5572;
+  background-color: #1e89a7;
   color: #FFF;
   padding: .5rem 0;
   text-align: center;
@@ -386,16 +392,16 @@ a {
 .site-header__logo {
   position: absolute;
   top: 0;
-  left: 50%;
-  transform: translateX(-50%) scale(0.8);
-  transform-origin: 50% 0;
-  background-color: #2f5572;
+  left: 5%;
+  transform: translateX(-10%) scale(0.4);
+  transform-origin: 10% 0;
   padding: 25px 36px;
 }
 @media (min-width: 800px) {
   .site-header__logo {
     left: auto;
     transform: translateX(0);
+    background-color: #1e89a7;
   }
 }
 .site-header__logo__graphic {
@@ -445,4 +451,34 @@ a {
   text-decoration: none;
   display: block;
   padding: 12px 0;
+}
+.date {
+  position: relative;
+  width: 70px;
+  font-family: Georgia, serif;
+  color: #999;
+  margin: 0 auto;
+}
+.day,
+.month,
+.year {
+  position: absolute;
+}
+.day {
+  font-size: 30px;
+  top: 15px;
+}
+.month {
+  top: 0;
+  left: 0;
+  font-size: 18px;
+}
+.year {
+  top: 13px;
+  right: -70px;
+  font-size: 20px;
+  rotation: -90deg !important;
+  /* ** Hacks ** */
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
 }
