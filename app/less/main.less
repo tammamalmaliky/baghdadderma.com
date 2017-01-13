@@ -488,10 +488,20 @@ a {
 	position: absolute;
 	width: 100%;
 	z-index: 2;
+	transition: background-color .3s ease-out;
+
 	//background-color: rgba(47, 85, 114, 0.3);
+	&--is-expanded {
+		background-color: rgba(47, 85, 114, 0.5);
+	}
 
 	@media (min-width: 800px) {
+		position: fixed;
 		background-color: rgba(47, 85, 114, 0.3);
+		&--dark {
+			background-color: rgba(23, 51, 72, .85);
+		}
+
 	}
 
 	&__btn-container {
@@ -502,6 +512,7 @@ a {
 		position: absolute;
 		top: 0;
 		left: 5%;
+		transition: transform .3s ease-out;
 		transform: translateX(-10%) scale(.4);
 		transform-origin: 10% 0;
 		padding: 25px 36px;
@@ -511,6 +522,9 @@ a {
 		transform: translateX(0);
 		background-color: @mainBlue;
 
+			.site-header--dark & {
+				transform: scale(.28);
+			}
 		}
 	}
 
@@ -532,10 +546,25 @@ a {
 	}
 
 	&__menu-content {
-		display: none;
+		opacity: 0;
+		transform: scale(1.2);
+		transition: all .3s ease-out;
+		position: relative;
+		z-index: -10;
+		padding-top: 90px;
+		text-align: center;
 
 		@media (min-width: 800px) {
-		display: block;
+			opacity: 1;
+			z-index: 1;
+			padding-top: 0;
+			transform: scale(1);
+		}
+
+		&--is-visible {
+			opacity: 1;
+			z-index: 1;
+			transform: scale(1);
 		}
 	}
 }
@@ -569,6 +598,11 @@ a {
 		text-decoration: none;
 		display: block;
 		padding: 12px 0;
+
+
+		&.is-current-link {
+			color: #fabb69;
+		}
 	}
 }
 
@@ -605,4 +639,15 @@ a {
 	/* ** Hacks ** */
 	-webkit-transform: rotate(-90deg);
 	-moz-transform: rotate(-90deg);
+}
+
+.reveal-item {
+	opacity: 0;
+	transition: all 1.5s ease-out;
+	transform: scale(1.15);
+
+	&--is-visible {
+		opacity: 1;
+		transform: scale(1);
+	}
 }
