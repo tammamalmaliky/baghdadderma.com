@@ -5,7 +5,7 @@ module.exports = function(grunt) {
         cssmin: {
             dist: {
                 files: {
-                    'app/css/main.min.css' : 'app/css/main.css'
+                    'app/public/css/main.css' : 'app/css/main.css'
                 }
             }
         },
@@ -78,12 +78,38 @@ module.exports = function(grunt) {
                     'app/public/js/App.js': ['app/js/App.js']
                 }
             }
-        }
+        },
+        imagemin: {                          // Task
+            
+            dynamic: {                         // Another target
+                files: [{
+                    expand: true,                  // Enable dynamic expansion
+                    cwd: 'app/',                   // Src matches are relative to this path
+                    src: ['assets/images/*.{png,jpg,gif,svg}'],   // Actual patterns to match
+                    dest: 'app/public/'                  // Destination path prefix
+                }]
+            }
+        },
+        copy: {
+            main: {
+                expand: true,
+                cwd: 'app',
+                src: '*.html',
+                dest: 'app/public/',
+            },
+            form: {
+                expand: true,
+                cwd: 'app/forms',
+                src: '**',
+                dest: 'app/public/forms',
+            },
+        },
+        
 
     });
-    grunt.loadNpmTasks('grunt-contrib-cssmin', 'grunt-contrib-less', 'grunt-contrib-watch', 'grunt-contrib-uglify', 'grunt-browser-sync', 'grunt-webpack');
+    grunt.loadNpmTasks('grunt-contrib-cssmin', 'grunt-contrib-less', 'grunt-contrib-watch', 'grunt-contrib-uglify', 'grunt-browser-sync', 'grunt-contrib-imagemin', 'grunt-contrib-copy');
 
     grunt.registerTask('default', ['browserSync', 'watch']);
-    grunt.registerTask('buildUgly', ['uglify']);
+    grunt.registerTask('build', ['imagemin', 'cssmin', 'uglify', 'copy']);
     grunt.registerTask('buildWebPack', ['webpack']);
 };
